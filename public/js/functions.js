@@ -345,7 +345,7 @@ function answerBack(data) {
 	}else{
         //alert(data.output.text);
 
-        for(var i in data.output.text){
+    for(var i in data.output.text){
 			if(data.output.text[i].substring(0, 2) == '<p'){
 				html_message+=data.output.text[i];
 			}else{
@@ -616,72 +616,6 @@ function sendMessage(text) {
     $.getJSON(PROXY_URL, function(data) {
         answerBack(data);
     });
-
-
-/*
-	// var nu_context= context.replaceAll("input","in_rep");
-	// nu_context= nu_context.replaceAll("INPUT","in_rep");
-    //
-	// try{
-	// 	var context_edit = JSON.parse(nu_context);
-	// 	context_edit.disclaimer_procrear = "";
-	// 	if(context!=''){
-	// 		params+="&context="+ encodeURIComponent(JSON.stringify(context_edit));
-	// 	}
-    //
-	// }catch(err){
-    //
-	// }
-
-	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-
-	xhr.open('POST', PROXY_URL, true);
-
-	xhr.onreadystatechange = function() {
-		console.log(xhr);
-		alert("entro");
-		if(xhr.readyState == 4 && xhr.status == 201) {
-			alert(xhr.responseText);
-		}
-		//xhr.send(params);
-        alert("clau2");
-		if (xhr.readyState>3){
-			watson_status = xhr.status;
-
-
-			if(xhr.status==201){
-				console.log(xhr)
-				var json_data = JSON.parse(xhr.responseText);
-
-				console.log(json_data);
-
-				if(DEBUG) console.log(json_data);
-
-				console.log(json_data.Datos.Contexto);
-
-				store.saveContext(json_data.Datos.Contexto);
-				try{
-					context = JSON.stringify(json_data.Datos.Contexto);
-
-				}catch(e){}
-
-				answerBack(json_data);
-			}else{
-				if(DEBUG) console.log(xhr.statusText);
-				showError();
-			}
-		}
-
-	};
-    alert(xhr.response.output.text);
-    xhr.send(text);
-
-
-	//xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-	//xhr.send(params);
-	return xhr;
-
-	*/
 }
 
 

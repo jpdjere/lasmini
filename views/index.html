@@ -237,13 +237,7 @@
 				        if (e.type == "mouseup") {
 				            //code triggers on release
 				            speechRecognizer.stop();
-										if ($chatMessage.value) {
-											writeAndSendMessage($chatMessage.value);
 
-										}
-										console.log("AHora si");
-										$("input[name=mensajeAEnviar]").val("e");
-										console.log("AHora si");
 
 				        }
 				    });
@@ -274,6 +268,17 @@
                         //r.innerHTML = finalTranscripts + '<span style="color:#999">' + interimTranscripts + '</span>';
 												$("input[name=mensajeAEnviar]").val(finalTranscripts + interimTranscripts);
                     };
+
+										speechRecognizer.onend = function(event){
+											if ($chatMessage.value) {
+												writeAndSendMessage($chatMessage.value);
+												console.log("AHora si");
+												$chatMessage.value = '';
+												console.log("On end")
+
+											}
+										}
+
                     speechRecognizer.onerror = function (event) {
                     };
                 }else{
